@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-python app/ingest_data.py \
+dbt init --project-dir "//usr/app/dbt" perqara_etl -s
+
+python scripts/ingest_data.py \
     --user=$POSTGRES_USER \
     --password=$POSTGRES_PASSWORD \
     --host=$DATABASE_HOST \

@@ -1,5 +1,5 @@
-#dbt-core
-#dbt-postgres
+dbt-core
+dbt-postgres
 psycopg2-binary
 sqlalchemy
 pandas

@@ -5,7 +5,7 @@ import os
 import glob
 import re
 
-dataset_path = '../dataset/'
+dataset_path = '/usr/app/dataset/'
 
 def main(params):
     # parametrizes db connection config
