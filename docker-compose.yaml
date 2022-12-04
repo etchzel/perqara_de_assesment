@@ -1,0 +1,30 @@
+services:
+    data-warehouse:
+        image: postgres:13
+        env_file:
+            - .env
+        volumes:
+            - "./postgres/data:/var/lib/postgresql/data:rw"
+        ports:
+            - "5432:5432"
+        container_name: dwh
+
+    pgadmin:
+        image: dpage/pgadmin4
+        env_file:
+            - .env
+        volumes:
+            - "./data_pgadmin:/var/lib/pgadmin"
+        ports:
+            - "8080:80"
+
+    etl-app:
+        build: .
+        env_file:
+            - .env
+        volumes:
+            - "./scripts:/app:rw"
+            - "./dataset:/dataset:rw"
+        depends_on:
+            - data-warehouse
+        container_name: etlapp

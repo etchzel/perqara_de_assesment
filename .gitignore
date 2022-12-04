@@ -1,0 +1,6 @@
+*.zip
+**_MACOSX
+postgres/data/*
+data_pgadmin/*
+!.gitkeep
+*.ipynb
