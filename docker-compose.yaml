@@ -25,6 +25,7 @@ services:
         volumes:
             - "./scripts:/usr/app/scripts"
             - "./dataset:/usr/app/dataset"
+            - "./postgres/dump:/usr/app/db_dump"
             - "./dbt/:/usr/app/dbt"
             - "./dbt_profile/:/root/.dbt/"
         depends_on:

@@ -15,7 +15,8 @@ def main(params):
     port = params.port
     db = params.db
 
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    db_uri = f'postgresql://{user}:{password}@{host}:{port}/{db}'
+    engine = create_engine(db_uri)
 
     # create schema layers
     with engine.connect() as conn:
@@ -30,10 +31,13 @@ def main(params):
         for file in glob.glob(dataset_path + '*'):
             table_name = re.split(r"\W+", file)[-2]
             try:
+                print(f"Dropping table {table_name} in case it exist ")
+                conn.execute(f"DROP TABLE if exists raw.{table_name} cascade;")
                 pd.read_csv(file).to_sql(name=table_name, index=False, con=conn, schema='raw', if_exists='replace')
                 print(table_name + " loaded successfully")
-            except:
+            except Exception as err:
                 print('load error')
+                print(err)
 
 
 if __name__ == '__main__':

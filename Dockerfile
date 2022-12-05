@@ -11,6 +11,7 @@ RUN apt-get update \
     build-essential \
     ca-certificates \
     libpq-dev \
+    postgresql-client \
   && apt-get clean \
   && rm -rf \
     /var/lib/apt/lists/* \
@@ -26,6 +27,7 @@ RUN python -m pip install --upgrade pip setuptools wheel --no-cache-dir
 COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
+ENV APPHOME=/usr/app
 WORKDIR /usr/app
 VOLUME /usr/app
 
