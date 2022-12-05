@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!bin/bash
 
 # ingest data to db
 python scripts/ingest_data.py \
