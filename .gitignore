@@ -1,6 +1,9 @@
 *.zip
 **_MACOSX
+**logs**
 postgres/data/*
 data_pgadmin/*
-!.gitkeep
 *.ipynb
+.user.yml
+*.pgsql
+!.gitkeep

@@ -28,8 +28,7 @@ COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 ENV APPHOME=/usr/app
-COPY scripts/etl_script.sh ${APPHOME}/scripts/etl_script.sh
 WORKDIR /usr/app
 VOLUME /usr/app
 
-ENTRYPOINT [ "/bin/bash", "scripts/etl_script.sh" ]
+ENTRYPOINT [ "/bin/bash" ]

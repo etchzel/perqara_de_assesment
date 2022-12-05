@@ -23,8 +23,11 @@ services:
         env_file:
             - .env
         volumes:
-            - "./scripts:/app:rw"
-            - "./dataset:/dataset:rw"
+            - "./scripts:/usr/app/scripts"
+            - "./dataset:/usr/app/dataset"
+            - "./postgres/dump:/usr/app/db_dump"
+            - "./dbt/:/usr/app/dbt"
+            - "./dbt_profile/:/root/.dbt/"
         depends_on:
             - data-warehouse
         container_name: etlapp
