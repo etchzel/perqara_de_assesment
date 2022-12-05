@@ -11,6 +11,7 @@ select
 	customers.customer_state,
 	
 	-- seller detail
+	order_items.seller_id,
 	sellers.seller_zip_code_prefix as seller_zip_code,
 	sellers.seller_city,
 	sellers.seller_state,
@@ -28,10 +29,10 @@ select
 	
 	-- order details
 	product_category.category,
-	order_items.order_counts,
-	product_category.product_qty,
-	order_items.price,
-	order_items.freight_value,
+	coalesce(order_items.order_counts, 1) as order_counts,
+	coalesce(product_category.product_qty, 1) as product_qty,
+	coalesce(order_items.price, 0) as price,
+	coalesce(order_items.freight_value, 0) as freight_value,
 	
 	-- payment details
 	payments.payment_type,
