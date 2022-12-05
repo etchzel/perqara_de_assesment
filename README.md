@@ -101,3 +101,16 @@ Example to test dbt connection with the postgres database/datawarehouse:
   ```bash
   docker container prune
   ```
+
+## Point of improvement
+
+- Separate the container for dbt service with python ingestion.
+- Add orchestration.
+- Add unit tests to the python ingestion script.
+- Add data integrity tests to dbt models.
+- Add in data models documentation in `dbt/perqara_etl/models/<model_layer>/schema.yml` so the following dbt command can be run to generate docs.
+
+  ```bash
+  dbt docs generate
+  dbt docs serve --port 8001
+  ```
