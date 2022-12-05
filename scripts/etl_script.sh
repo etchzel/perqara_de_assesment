@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# initialize dbt
-dbt init --project-dir "//usr/app/dbt" perqara_etl -s
-
 # ingest data to db
 python scripts/ingest_data.py \
     --user=$POSTGRES_USER \
@@ -12,7 +9,13 @@ python scripts/ingest_data.py \
     --db=$POSTGRES_DB
 
 # change directory to dbt
-cd './dbt/perqara_etl'
+cd $APPHOME/dbt
+pwd
+
+# initialize dbt
+dbt init perqara_etl -s
+
+cd $APPHOME/dbt/perqara_etl
 pwd
 
 # install dbt packages
@@ -21,7 +24,7 @@ dbt deps
 # test dbt connection
 dbt debug
 
-# build dbt models
+# build dbt models and run tests
 dbt build
 
 # dump postgres db
