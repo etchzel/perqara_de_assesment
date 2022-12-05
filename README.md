@@ -9,6 +9,8 @@ My submission for Data Engineer Assesment for Perqara.
 - Docker
 - Docker compose
 
+**NOTE:** `docker compose` command here uses Docker Compose V2, more info [here](https://docs.docker.com/compose/compose-v2/).
+
 For Windows:
 
 - WSL2 for Docker Desktop Backend
