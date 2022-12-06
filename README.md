@@ -28,7 +28,7 @@ For Windows:
 
 The data pipeline is build according to the diagram below:
 
-![perqara_etl](perqara_etl.png)
+![perqara_etl](./images/perqara_etl.png)
 
 Optionally you can add Airflow or a cron job to the services to orchestrate the pipeline
 
@@ -51,6 +51,25 @@ Optionally you can add Airflow or a cron job to the services to orchestrate the 
   ```
 
 Since the entrypoint is set to run with `["/bin/bash", "scripts/etl_script.sh"]`, the script to run the ETL will automatically run after the container is spin up. The script also include dumping the DB data to [postgres/dump](./postgres/dump/) folder.
+
+## PGAdmin setup
+
+PGAdmin can be used to check the data, but there's a need to register the server first for first time login.
+
+- In the login page, login into PGAdmin. Email is set to `admin@admin.com` and password to `root`.
+
+- Next click on Add New Server
+
+  ![add_server](./images/add_server.png)
+
+- After that in the `General` tab, enter in the `Name` like below.
+
+  ![add_server_general](./images/add_server_general.png)
+
+- Finally, click on `Connection` tab and enter in the connection credentials as shown below. Password is `root`.
+
+  ![add_server_connection](./images/add_server_connection.png)
+
 
 ## Manual Testing
 
